@@ -12,7 +12,6 @@ export default function Now() {
   const [trigger, setTrigger] = useState(0)
   const triggerRef = useRef(0)
 
-  // Force scramble re-trigger every 60s independent of data changes
   useEffect(() => {
     const iv = setInterval(() => {
       triggerRef.current += 1
@@ -55,7 +54,7 @@ export default function Now() {
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
         <p style={{ fontFamily: MONO, fontSize: '11px', letterSpacing: '0.3em', color: green, opacity: 0.4, textTransform: 'uppercase', marginBottom: '0.3rem' }}>
-          heygabo.dev/now
+          now.heygabo.dev
         </p>
         <p style={{ fontFamily: MONO, fontSize: '12px', color: green, opacity: 0.7, letterSpacing: '0.15em' }}>
           gabo@lima ~ %
