@@ -1,16 +1,19 @@
-# React + Vite
+# heygabo.now
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A live "what's Gabo up to right now" dashboard — [heygabo-now.vercel.app](https://heygabo-now.vercel.app)
 
-Currently, two official plugins are available:
+## What it shows
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Currently playing / recently played track on Spotify
+- Last game played on Steam
+- Latest GitHub commit
+- Local weather
+- NBA scores
 
-## React Compiler
+## How it works
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Each integration is a separate Vercel Serverless Function under `/api`, called from the frontend and cached via Vercel KV (Redis) to stay within each service's rate limits. Spotify auth uses a one-time OAuth flow (`scripts/get-spotify-token.mjs`) to generate a long-lived refresh token, stored as an environment variable rather than re-authenticating on every request.
 
-## Expanding the ESLint configuration
+## Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+React + Vite · Vercel Serverless Functions · Vercel KV
